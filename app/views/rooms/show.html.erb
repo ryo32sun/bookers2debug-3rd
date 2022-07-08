@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h1 class="my-5"><%= @another_entry.user.name %> さんとのチャット</h1>
+        <% @messages.each do |message| %>
+          <% if message.user == current_user %>
+            <div class="col-5 ml-auto">
+              <div class="text-right my-3"><%= message.body %> <i class="fas fa-user"></i><%= message.user.name %></div>
+            </div>
+          <% else %>
+            <div class="col-5 mr-auto">
+              <h5 class="text-left my-3"><%= message.body %> <i class="fas fa-user"></i><%= message.user.name %></h5>
+            </div>
+          <% end %>
+        <% end %>
+        <div class="mt-5">
+          <%= form_with model: @message, local: true do |f| %>
+            <%= f.text_field :body  %>
+            <%= f.hidden_field :room_id, value: @room.id %>
+            <%= f.submit "送信" %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>
