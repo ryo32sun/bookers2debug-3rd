@@ -18,6 +18,7 @@
         <td><%= book.body %></td>
         <td><%= render "favorites/favorite", book: book %></td>
         <td>コメント数：<%= book.book_comments.count %></td>
+        <td>閲覧数：<i class="fas fa-eye"></i><%= book.impressionist_count %></td>
       </tr>
     <% end %>
   </tbody>
