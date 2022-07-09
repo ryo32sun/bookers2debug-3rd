@@ -4,6 +4,8 @@
       <th></th>
       <th>グループ名</th>
       <th>紹介文</th>
+      <th>メンバー数</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -16,9 +18,12 @@
           <% end %>
         </td>
         <td><%= group.introduction %></td>
-        <% if group.owner_id == current_user.id %>
-          <td><%= link_to "Edit", edit_group_path(group.id), class:"btn btn-success" %></td>
-        <% end %>
+        <td><%= group.group_users.count.to_i + 1 %> 人</td> <!--オーナー1人分を追加-->
+        <td>
+          <% if group.owner_id == current_user.id %>
+            <%= link_to "Edit", edit_group_path(group.id), class:"btn btn-success" %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

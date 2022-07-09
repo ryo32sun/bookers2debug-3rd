@@ -21,7 +21,7 @@ class User < ApplicationRecord
   
   # グループ機能のアソシエーション
   has_many :group_users, dependent: :destroy
-  has_many :groups, through: :group_users
+  has_many :groups, through: :group_users, source: :group
   
   has_one_attached :profile_image
 
@@ -40,7 +40,10 @@ class User < ApplicationRecord
   def following?(user)
     followers.include?(user)
   end
-    
+  
+  def join_group?(group_user)
+    groups.include?(group_user)
+  end
   
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'

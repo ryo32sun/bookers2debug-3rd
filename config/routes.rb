@@ -18,7 +18,9 @@ Rails.application.routes.draw do
     get "followers" => "relationships#followers", as: "followers"
   end
   
-  resources :groups, only: [:index, :show, :edit, :new, :create, :edit, :update] 
+  resources :groups, only: [:index, :show, :edit, :new, :create, :edit, :update]  do
+    resource :group_users, only: [:create, :destroy]
+  end
 
   
   resources :messages, only: [:create]
