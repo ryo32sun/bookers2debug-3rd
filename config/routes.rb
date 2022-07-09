@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
-  get 'groups/new'
-  get 'groups/show'
-  get 'groups/edit'
-  get 'groups/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
   root :to => "homes#top"
   get "home/about"=>"homes#about"
+
 
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
     resource :favorites, only: [:create, :destroy]
@@ -20,6 +17,8 @@ Rails.application.routes.draw do
   
   resources :groups, only: [:index, :show, :edit, :new, :create, :edit, :update]  do
     resource :group_users, only: [:create, :destroy]
+    get "new/mail" => "groups#new_mail"
+    get "send/mail" => "groups#send_mail"
   end
 
   

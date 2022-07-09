@@ -75,4 +75,28 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
   config.hosts << "1074ec03d6a0469193134b70690673e9.vfs.cloud9.ap-northeast-1.amazonaws.com"
+  
+  # config.action_mailer.rise_delivery_errors = true
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   post:  587,
+  #   address:  'smtp.gmail.com',
+  #   domain: 'gmail.com',
+  #   user_name: 'riri.for.test@gmail.com',
+  #   password: 'hmtxxanthzeiyxbn',
+  #   authentication: 'login',
+  #   enable_starttls_auto: true
+  # }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    port:                 587,
+    address:              'smtp.gmail.com',
+    domain:               'gmail.com',
+    user_name:            'riri.for.test@gmail.com',
+    password:             'hmtxxanthzeiyxbn',
+    authentication:       'login',
+    enable_starttls_auto: true
+  }
+  
 end
